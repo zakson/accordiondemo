@@ -1,0 +1,76 @@
+<!DOCTYPE html><html><head>
+    <meta charset="utf-8" />
+    <title>jQuery Accordion Demo</title>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  
+      
+    <script>
+    
+function initjquery()
+{
+  $(function() {
+    $( "#accordion" )
+      .accordion({
+        header: "> div > h3"
+      })
+      .sortable({
+        axis: "y",
+        handle: "h3",
+        stop: function( event, ui ) {
+          ui.item.children( "h3" ).triggerHandler( "focusout" );
+          $( this ).accordion( "refresh" );
+        }
+      });
+  });
+}
+    
+    </script>
+     <style>
+html {
+    background-color:#048;
+}
+
+
+.group { zoom: 1 }      /* IE has layout issues when sorting (see #5413) */
+     </style>
+</head>
+<body onload="initjquery();">
+
+<div id="accordion">
+  
+   <div class="group header">
+    <h3>Accordion Demo</h3>
+    <div>
+    Dokumentacja: <a href="https://jqueryui.com/accordion/">https://jqueryui.com/accordion/</a>        
+    </div>
+  </div>    
+
+  <div class="group need" ng-repeat="need in needs track by $index">
+    <h3>Zakładka</h3>
+    <div>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed imperdiet eros. Nulla ac mi erat. Pellentesque vestibulum bibendum dolor, nec fermentum metus tempor eu. Nam lobortis at libero eget fermentum. Donec eu arcu ligula. Sed ut quam commodo, volutpat mauris et, aliquet felis. Fusce in feugiat ante, ut pellentesque ex. Maecenas imperdiet sem eget urna finibus, quis convallis purus semper. Nullam facilisis quam sed ultrices efficitur. Ut id euismod orci, id placerat arcu. Aliquam erat volutpat. Pellentesque diam ante, pretium quis nunc nec, dignissim congue orci. Cras ac luctus mi. Sed ac lobortis lacus. Curabitur feugiat nibh eget massa pharetra, eget ullamcorper tellus auctor. Integer vestibulum luctus enim, nec condimentum magna fermentum a.
+    </div>
+  </div>
+  
+  <div class="group need" ng-repeat="need in needs track by $index">
+    <h3>Formularz</h3>
+    <div>
+        <form>
+             <textarea></textarea>
+             <input type="submit" calue="Zapisz" />
+        </form>
+   </div>
+  </div>
+
+  <div class="group stopka">
+    <h3>Stopka</h3>
+    <div>
+        Zawartość ostatniej zakładki
+    </div>
+  </div>  
+</div>    
+
+
+</body></html>
